@@ -1,4 +1,4 @@
-#Reference: http://neuronaldynamics.epfl.ch.
+#Reference: http://neuronaldynamics.epfl.ch
 
 import brian2 as b2
 import numpy as np
