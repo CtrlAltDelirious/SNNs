@@ -1,7 +1,7 @@
 # Reference: http://neuronaldynamics.epfl.ch
 
 import brian2 as b2
-from Spiking-Neural-Networks.tools import input_factory, plot_tools
+from SNNs.tools import input_factory, plot_tools
 import random
 import matplotlib.pyplot as plt
 
