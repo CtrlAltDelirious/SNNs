@@ -15,5 +15,5 @@ step_current = input_factory.get_step_current(
 
 # plot I and vm
 plot_tools.plot_voltage_and_current_traces(
-state_monitor, step_current, title="min input", firing_threshold=LIF.FIRING_THRESHOLD)
+state_monitor, step_current, title="min input", firing_threshold=Main.FIRING_THRESHOLD)
 print("nr of spikes: {}".format(spike_monitor.count[0]))  # should be 0
