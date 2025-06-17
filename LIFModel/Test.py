@@ -7,7 +7,7 @@ print("resting potential: {}".format(LIFModel.V_REST))
 # create a step current with amplitude = I_min
 step_current = input_factory.get_step_current(
     t_start=5, t_end=100, unit_time=b2.ms,
-    amplitude=I_min)  # set I_min to your value
+    amplitude=2*10**-9)  # set I_min to your value
 
 # run the LIF model.
 # Note: As we do not specify any model parameters, the simulation runs with the default values
