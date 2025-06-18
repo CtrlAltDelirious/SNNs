@@ -29,7 +29,7 @@ def get_step_current(t_start, t_end, unit_time, amplitude, append_zero=True):
 
     assert isinstance(t_start, int), "t_start_ms must be of type int"
     assert isinstance(t_end, int), "t_end must be of type int"
-    assert b2.units.fundamentalunits.have_same_dimensions(amplitude, b2.amp), \
+    assert b2.units.fundamentalunits.have_same_dimensions(amplitude, b2.uamp), \
         "amplitude must have the dimension of current e.g. brian2.uamp"
     tmp_size = 1 + t_end  # +1 for t=0
     if append_zero:
