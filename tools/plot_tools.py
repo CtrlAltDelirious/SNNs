@@ -62,6 +62,25 @@ def plot_voltage_and_current_traces(voltage_monitor, current, title=None, firing
         plt.suptitle(title)
     return axis_c, axis_v
 
+def get_amplitude(voltage_monitor, current, title=None, firing_threshold=None, legend_location=0):
+    """
+    ONLY BASED ON DEFAULT PARAMETERS
+    Returns:
+        the amplitude of the voltage trace
+    """
+
+    assert isinstance(voltage_monitor, b2.StateMonitor), "voltage_monitor is not of type StateMonitor"
+    assert isinstance(current, b2.TimedArray), "current is not of type TimedArray"
+
+    max_val = max(voltage_monitor[0].v)
+    if firing_threshold is not None:
+        max_val = max(max_val, firing_threshold)
+    min_val = min(voltage_monitor[0].v)
+    margin = 0.05 * (max_val - min_val)
+
+    amplitude = max_val - -70 * b2.mV
+
+    return amplitude
 
 def plot_network_activity(rate_monitor, spike_monitor, voltage_monitor=None, spike_train_idx_list=None,
                           t_min=None, t_max=None, N_highlighted_spiketrains=3, avg_window_width=1.0 * b2.ms,
