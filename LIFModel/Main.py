@@ -1,5 +1,6 @@
 # Reference: http://neuronaldynamics.epfl.ch
-
+import sys
+sys.path.append("C:/Users/zafir/OneDrive/PC_STUFF/Desktop/Queen_Mary/Research/Code")
 import brian2 as b2
 from SNNs.tools import input_factory, plot_tools
 import random
@@ -11,7 +12,7 @@ V_RESET = -65 * b2.mV
 FIRING_THRESHOLD = -50 * b2.mV
 MEMBRANE_RESISTANCE = 10. * b2.Mohm
 MEMBRANE_TIME_SCALE = 8. * b2.ms
-ABSOLUTE_REFRACTORY_PERIOD = 2.0 * b2.ms
+ABSOLUTE_REFRACTORY_PERIOD = 3.0 * b2.ms
 
 
 def print_default_parameters():
@@ -101,7 +102,7 @@ def _deobfuscate_params(obfuscated_params):
     return param_set
 
 
-def get_random_param_set(random_seed=None):
+def get_random_param_set(random_seed):
     """
     creates a set of random parameters. All values are constrained to their typical range
     Returns:
@@ -110,7 +111,7 @@ def get_random_param_set(random_seed=None):
     random.seed(random_seed)
     v_rest = (-75. + random.randint(0, 15)) * b2.mV
     v_reset = v_rest + random.randint(-10, +10) * b2.mV
-    firing_threshold = random.randint(-40, +5) * b2.mV
+    firing_threshold = random.randint(-50, -40) * b2.mV
     membrane_resistance = random.randint(2, 15) * b2.Mohm
     membrane_time_scale = random.randint(2, 30) * b2.ms
     abs_refractory_period = random.randint(1, 7) * b2.ms
@@ -152,7 +153,7 @@ def simulate_random_neuron(input_current, obfuscated_param_set):
     # run the LIF model
     state_monitor, spike_monitor = simulate_LIF_neuron(
         input_current,
-        simulation_time=50 * b2.ms,
+        simulation_time=100 * b2.ms,
         v_rest=vals[0],
         v_reset=vals[1],
         firing_threshold=vals[2],
@@ -197,3 +198,4 @@ def getting_started():
 
 if __name__ == "__main__":
     getting_started()
+    print_default_parameters()
